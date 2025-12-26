@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  py_flask:
+    image: python:3.13.1  # 使用指定版本的 Python 镜像
+    container_name: py_flask
+    working_dir: /app  # 设置工作目录
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./:/app  # 将当前项目目录挂载到容器内
+    command: >
+      bash -c "pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/
+      && python /app/app.py
+      && tail -f /dev/null"
+    ports:
+      - "8080:8080"
+    restart: always

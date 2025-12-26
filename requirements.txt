@@ -1,0 +1,47 @@
+# Web框架
+Flask==3.1.0
+flask-restx==1.3.0
+
+# 数据库
+SQLAlchemy==2.0.37
+mysqlclient==2.2.6
+
+# 认证与安全
+PyJWT==2.10.1
+cryptography==44.0.0
+
+# TrueNAS API
+truenas_api_client @ git+https://github.com/truenas/api_client.git@f985509571f5bfb53293aa19ff0f4a559a9feba6
+
+# SSH客户端
+paramiko==3.5.0
+
+# HTTP请求
+requests==2.32.5
+
+# 日志输出
+colorama==0.4.6
+
+# 日期时间
+pytz==2024.2
+aniso8601==10.0.0
+
+# 配置管理
+PyYAML==6.0.2
+
+# 工具库
+jsonschema==4.25.1
+click==8.1.8
+
+# 核心依赖
+itsdangerous==2.2.0
+Jinja2==3.1.5
+MarkupSafe==3.0.2
+Werkzeug==3.1.3
+
+# WebSocket支持
+websocket-client==1.9.0
+
+# 开发和测试工具（可选）
+# pip-autoremove==0.10.0
+# vulture==2.14

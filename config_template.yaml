@@ -1,0 +1,27 @@
+model: dev
+configs:
+- name: dev
+  dist: ./dist
+  port: 8080
+  md5_salt: aisdanny
+  diskless:
+    truenas_host: 10.0.101.241 #truenas地址
+    truenas_user: root #truenas用户必须root用户(修改network配置需要root权限)
+    truenas_password: skycode #truenas密码
+    pve:
+      vm_pc_mac_prefix: 1a:2b:3c:4d:5e #vm pc mac前缀(默认1a:2b:3c:4d:5e)
+      pve_base: iscsi/pve_nfs #pve nfs目录
+      pve_client: iscsi/pve_client #pve client目录(差分目录)
+  jwt:
+    key: JwtKey123
+    token_expire_minutes: 120
+    refresh_key: JwtRefreshKey123
+    refresh_token_expire_minutes: 7200
+  mysql:
+    host: 127.0.0.1
+    port: 3306
+    username: root
+    password: root
+    database: aisdanny_db
+    pool_size: 10
+    max_overflow: 20
