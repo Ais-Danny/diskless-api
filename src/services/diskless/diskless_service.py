@@ -3,7 +3,7 @@ import os
 from src.utils.truenas import truenas_api
 from src.model.config_model import config
 from src.utils.truenas.truenas_api import TrueNASEntity
-from src.services.diskless.change_pve_config import vm_pv_config_revise 
+from src.services.diskless.pve_init import vm_pv_config_revise
 
 
 def create_diff_directory(ip):

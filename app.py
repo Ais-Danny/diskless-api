@@ -20,7 +20,7 @@ def print_version():
 ║  ✨ 专业的无盘管理系统 ✨                                     
 ║  📁 支持 TrueNAS 集成 | 🔧 PVE 配置管理 | 🌐 NFS 共享服务    
 ║                                                               
-║  🔗 GitHub: https://github.com/diskless/management           
+║  🔗 GitHub: https://github.com/Ais-Danny/diskless-api         
 ╚═══════════════════════════════════════════════════════════════
 """.format(version=__version__)
     

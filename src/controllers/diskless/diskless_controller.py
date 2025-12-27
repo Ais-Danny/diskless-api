@@ -26,7 +26,7 @@ def create_diff():
         
         # 返回ipxe能直接执行的格式，设置环境变量
         ipxe_script =f'''#!ipxe
-kernel http://${{ipxe_server}}/pxe/pve/vmlinuz ip=dhcp root=/dev/nfs nfsroot={config.diskless.truenas_host}:{nfs_root},vers=3,tcp,rw cloud-init=disabled  net.ifnames=0 biosdevname=0
+kernel http://${{ipxe_server}}/pxe/pve/vmlinuz ip=dhcp BOOTIF=01-{mac} root=/dev/nfs nfsroot={config.diskless.truenas_host}:{nfs_root},vers=3,tcp,rw cloud-init=disabled  net.ifnames=0 biosdevname=0
 initrd http://${{ipxe_server}}/pxe/pve/initrd.img
 boot
 '''

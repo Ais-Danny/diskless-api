@@ -12,4 +12,13 @@ sed -i -E "
 
 echo "vmbr0 IP updated to ${NEW_IP}"
 
-
+#删除动态信息
+rm -rf $3/etc/udev/rules.d/60-persistent-net.rules
+truncate -s 0 $3/etc/machine-id
+rm -rf $3/var/lib/dbus/machine-id
+rm -rf $3/var/lib/systemd/network/*
+rm -rf $3/tmp/*
+rm -rf $3/run/*
+rm -rf $3/proc/*
+rm -rf $3/sys/*
+rm -rf $3/dev/*

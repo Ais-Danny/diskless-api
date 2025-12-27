@@ -11,7 +11,7 @@ qm set $VMID --net0 virtio=$NEW_MAC,bridge=vmbr0
 '''
 
 
-def vm_pv_config_revise(ip, mac,nfs_path)->Tuple[bool, str]:
+def vm_pv_config_revise(ip:str, mac:str,nfs_path)->Tuple[bool, str]:
     """
     修改VM PC的NFS配置
     ip: PVE IP地址 
@@ -21,11 +21,12 @@ def vm_pv_config_revise(ip, mac,nfs_path)->Tuple[bool, str]:
     # 初始化SSH客户端
     ssh = SSHClient(host=config.diskless.truenas_host, username=config.diskless.truenas_user, password=config.diskless.truenas_password)
     # 执行命令
-    result,output=ssh.upload_file(local_path="./resource/change_vm_pve_config.sh", remote_path="/tmp/vm_pv_config_revise.sh")
+    server_stript_path = f"/tmp/pve_init{ip.split('.')[-1]}.sh"
+    result,output=ssh.upload_file(local_path="./resource/script/pve_init.sh", remote_path=server_stript_path)
     if not result:
         return False,f"Failed to upload file: {output}"
-    ssh.execute_command("chmod +x /tmp/vm_pv_config_revise.sh")
-    result,output=ssh.execute_command(f"bash /tmp/vm_pv_config_revise.sh {ip}/24 {ip.rsplit('.', 1)[0]}.1 {nfs_path}")
+    ssh.execute_command(f"chmod +x {server_stript_path}")
+    result,output=ssh.execute_command(f"bash {server_stript_path} {ip}/24 {ip.rsplit('.', 1)[0]}.1 {nfs_path}")
     # 生成PVE初始化脚本内容
     init_script_content = get_pve_init_script("100", mac)
     # 写入rc.local文件
