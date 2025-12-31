@@ -49,3 +49,14 @@ def create_diff_directory(ip):
     return True, nfs_dir
 
 
+def start_base_os(ip:str):
+    """
+    启动母盘OS系统
+    """
+    ip_last_octet = ip.split('.')[-1]
+    pc_mac=f"{config.diskless.pve.vm_pc_mac_prefix}:{f"{int(ip_last_octet):02x}"}"
+    nfs_root=f'/mnt/{config.diskless.pve.pve_base}'
+    result, msg = vm_pv_config_revise(ip,pc_mac,nfs_root)
+    if result is False:
+        return False, f"Failed to change VM PV config: {msg}"
+    return True, nfs_root

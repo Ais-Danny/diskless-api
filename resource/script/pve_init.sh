@@ -22,3 +22,18 @@ rm -rf $3/run/*
 rm -rf $3/proc/*
 rm -rf $3/sys/*
 rm -rf $3/dev/*
+
+
+# # udev 网卡持久化规则（旧 Debian/Ubuntu）
+# rm -f $3/etc/udev/rules.d/70-persistent-net.rules
+# rm -f $3/etc/udev/rules.d/60-persistent-net.rules
+# # machine-id（必须保留文件但清空）
+# truncate -s 0 $3/etc/machine-id
+# rm -f $3/var/lib/dbus/machine-id
+# # systemd-networkd 的旧配置（如果你用它）
+# rm -rf $3/var/lib/systemd/network/*
+# # DHCP 租约
+# rm -rf $3/var/lib/dhcp/*
+# rm -rf $3/var/lib/NetworkManager/*
+# # 临时目录
+# rm -rf $3/tmp/*
