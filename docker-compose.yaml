@@ -11,7 +11,6 @@ services:
       - ./:/app
     command: >
       bash -c "
-      pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/ &&
       python /app/app.py
       "
     expose:
