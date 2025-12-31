@@ -88,14 +88,60 @@ cp config_template.yaml config.yaml
 
 ### 运行应用
 
+#### 本地运行
 ```bash
 python app.py
 ```
 
-或使用 Docker：
+#### Docker 容器化部署
+
+**环境要求：**
+- Docker Engine 20.10+
+- Docker Compose 2.0+
+
+**服务架构：**
+- **py_flask**: Flask 应用容器（Python 3.13.1）
+- **nginx**: 反向代理容器（nginx:alpine）
+
+**启动容器：**
 ```bash
+# 构建并启动所有服务（后台运行）
 docker-compose up -d
+
+# 查看服务状态
+docker-compose ps
+
+# 实时查看日志
+docker-compose logs -f
+
+# 查看特定服务日志
+docker-compose logs -f py_flask
+docker-compose logs -f nginx
 ```
+
+**容器管理：**
+```bash
+# 重启服务
+docker-compose restart
+
+# 停止并删除容器
+docker-compose down
+
+# 重新构建镜像
+docker-compose up -d --build
+
+# 进入容器执行命令
+docker-compose exec py_flask bash
+```
+
+**端口访问：**
+- 应用访问：http://localhost:8080
+- API 文档：http://localhost:8080/doc
+
+**配置说明：**
+- 容器自动设置时区为 `Asia/Shanghai`
+- 使用阿里云 PyPI 源加速依赖安装
+- 代码目录挂载到容器 `/app` 目录，支持热更新
 
 ## 配置说明
 

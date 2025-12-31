@@ -11,14 +11,14 @@ from cattrs import structure, unstructure
 @dataclass(order=True)
 class Pve:
     vm_pc_mac_prefix: str="1a:2b:3c:4d:5e" # windows mac地址(防止启动时mac地址冲突,最后一位根据ip动态改变)
-    pve_base: str = 'data/pve_nfs' #父数据集
+    pve_base: str = 'data/pve_base' #父数据集
     pve_client: str = 'data/pve_client' #差分数据集(客户端)
 
 @dataclass(order=True)
 class Diskless:
     truenas_host: str = '127.0.0.1' #truenas服务器ip
     truenas_user: str = 'truenas_admin'
-    truenas_password: str = '123456'
+    truenas_password: str = 'skycode'
     pve: Pve = field(default_factory=Pve)
 
 @dataclass(order=True)

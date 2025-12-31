@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   py_flask:
-    image: python:3.13.1
+    build: .
     container_name: py_flask
     working_dir: /app
     environment:
@@ -24,7 +24,7 @@ services:
     depends_on:
       - py_flask
     ports:
-      - "80:80"
+      - "8080:80"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./nginx/html:/usr/share/nginx/html
