@@ -1,5 +1,5 @@
 #!ipxe
-set file_server 10.0.101.155
+set file_server 10.0.101.155:8080
 set diskless_api 10.0.101.113:8080
 
 set default boot_client
