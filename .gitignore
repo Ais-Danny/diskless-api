@@ -6,4 +6,7 @@ config.yaml
 .venv
 .idea
 test*
-nginx/html
+nginx/html/*
+!nginx/html/pve
+nginx/html/pve/*
+!nginx/html/pve/start.ipxe

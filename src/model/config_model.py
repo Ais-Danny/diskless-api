@@ -17,7 +17,7 @@ class Pve:
 @dataclass(order=True)
 class Diskless:
     truenas_host: str = '127.0.0.1' #truenas服务器ip
-    truenas_user: str = 'truenas_admin'
+    truenas_user: str = 'root'
     truenas_password: str = 'skycode'
     pve: Pve = field(default_factory=Pve)
 
